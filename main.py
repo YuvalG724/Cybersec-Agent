@@ -13,6 +13,10 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, pipeline
 
 load_dotenv()
 
+api_key=os.getenv("serpapi")
+
+print(api_key)
+
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
 model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
 pipe = pipeline("text2text-generation", model=model, tokenizer=tokenizer)
