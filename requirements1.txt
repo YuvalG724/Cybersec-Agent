@@ -1,0 +1,9 @@
+python-dotenv
+requests
+langchain-core
+langgraph
+langchain-huggingface
+transformers
+torch
+typing-extensions
+serpapi
