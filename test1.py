@@ -54,17 +54,12 @@ try:
         "https://api-inference.huggingface.co/models/google/flan-t5-large",
         os.getenv("HF_API_KEY")
     )
-    print("Using GPT-2 model")
+    print("Using t5 large model")
 except Exception as e:
     print(f"API failed, using local model: {e}")
     # Fallback to local pipeline (completely free, no API needed)
-    try:
-        llm = pipeline("text2text-generation", model="google/flan-t5-base", max_length=512)
-        print("Using local FLAN-T5 model")
-    except Exception as e2:
-        # Final fallback - smallest model
-        llm = pipeline("text-generation", model="gpt2", max_length=512)
-        print("Using local GPT-2 model")
+    llm = pipeline("text2text-generation", model="google/flan-t5-base", max_length=512)
+    print("Using local FLAN-T5 model")
 
 indexFile = "cveIndex.faiss"
 mapFile = "id_map.pkl"
@@ -356,4 +351,5 @@ graphBuilder.add_edge(START,"searchThreat")
 graphBuilder.add_edge("report",END)
 graph = graphBuilder.compile()
 graph.invoke({})
+
 
