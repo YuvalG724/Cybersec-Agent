@@ -51,10 +51,10 @@ class HFInferenceWrapper:
 try:
     # Try GPT-2 first (always available and free)
     llm = HFInferenceWrapper(
-        "https://api-inference.huggingface.co/models/google/flan-t5-large",
+        "https://api-inference.huggingface.co/models/gpt2",
         os.getenv("HF_API_KEY")
     )
-    print("Using t5 large model")
+    print("Using GPT-2 model")
 except Exception as e:
     print(f"API failed, using local model: {e}")
     # Fallback to local pipeline (completely free, no API needed)
@@ -351,5 +351,3 @@ graphBuilder.add_edge(START,"searchThreat")
 graphBuilder.add_edge("report",END)
 graph = graphBuilder.compile()
 graph.invoke({})
-
-
