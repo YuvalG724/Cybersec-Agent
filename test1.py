@@ -51,7 +51,7 @@ class HFInferenceWrapper:
 try:
     # Try GPT-2 first (always available and free)
     llm = HFInferenceWrapper(
-        "https://api-inference.huggingface.co/models/gpt2",
+        "https://api-inference.huggingface.co/models/google/flan-t5-large",
         os.getenv("HF_API_KEY")
     )
     print("Using GPT-2 model")
@@ -356,3 +356,4 @@ graphBuilder.add_edge(START,"searchThreat")
 graphBuilder.add_edge("report",END)
 graph = graphBuilder.compile()
 graph.invoke({})
+
